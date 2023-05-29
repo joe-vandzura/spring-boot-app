@@ -11,7 +11,8 @@
 <h1> This is the landing page!</h1>
 
 <ul th:each="user : ${users}">
-	<li>Username: <span th:text="${user.username}"></span></li>
+	<li>Username: <span th:text="${user.username}"></span>, ID: <span th:text="${user.id}"></span></li>
+
 </ul>
 
 

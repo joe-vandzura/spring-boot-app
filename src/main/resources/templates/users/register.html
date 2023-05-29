@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8">
 	<title>Register Page</title>
@@ -8,12 +10,12 @@
 
 <h1>This is the register page!</h1>
 
-<form method="post" action="/register">
+<form method="post" action="/register" th:object="${user}">
 	<label for="username-input">Username</label>
-	<input id="username-input" type="text" name="username">
+	<input id="username-input" type="text" th:field="*{username}">
 	<br>
 	<label for="password-input">Password</label>
-	<input id="password-input" type="password" name="password">
+	<input id="password-input" type="password" th:field="*{password}">
 	<br>
 	<button type="submit">Register</button>
 </form>

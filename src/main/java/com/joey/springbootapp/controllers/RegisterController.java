@@ -3,10 +3,8 @@ package com.joey.springbootapp.controllers;
 import com.joey.springbootapp.models.User;
 import com.joey.springbootapp.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/register")
@@ -19,16 +17,14 @@ public class RegisterController {
     }
 
     @GetMapping
-    public String showRegisterPage() {
+    public String showRegisterPage(Model model) {
+        model.addAttribute("user", new User());
         return "users/register";
     }
 
     @PostMapping
-    public String createNewUser(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
-        User newUser = new User();
-        newUser.setUsername(username);
-        newUser.setPassword(username);
-        userDao.save(newUser);
+    public String createNewUser(@ModelAttribute(name = "user") User user) {
+        userDao.save(user);
         return "redirect:/";
     }
 
