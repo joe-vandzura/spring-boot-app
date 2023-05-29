@@ -5,8 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-@EnableJpaRepositories("com.joey.springbootapp.repositories")
+@SpringBootApplication
 public class SpringBootAppApplication {
 
 	public static void main(String[] args) {
