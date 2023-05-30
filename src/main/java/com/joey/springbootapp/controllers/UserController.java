@@ -26,6 +26,10 @@ public class UserController {
 
     @PostMapping
     public String saveUser(@ModelAttribute User user){
+        boolean usernameAlreadyUsed = userDao.findByUsername(user.getUsername()) != null;
+        if (usernameAlreadyUsed) {
+            return "register";
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
