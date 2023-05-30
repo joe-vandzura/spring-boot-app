@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="UTF-8">
 	<title>Login Page</title>
+	<th:block th:insert="~{partials/head :: head}"></th:block>
 </head>
 <body>
+<th:block th:insert="~{partials/navbar :: navbar}"></th:block>
 
 <h1>This is the login page!</h1>
 
+<form th:action="@{/login}" th:method="POST" th:object="${user}">
+	<input id="username" class="form-control" name="username" type="text"
+		   placeholder="Username">
+	<input id="password" class="form-control" name="password" type="password"
+		   placeholder="Password">
+	<input type="submit" class="login-register-button" value="Log In"/>
+	<input type="hidden" th:field="${user.id}">
+</form>
+
+
+<th:block th:insert="~{partials/footer-tags :: footer-tags}"></th:block>
 </body>
 </html>

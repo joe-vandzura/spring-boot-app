@@ -16,7 +16,14 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        username = copy.username;
+        password = copy.password;
+    }
 
+    public User() {
+    }
 
 
     // boiler plate code

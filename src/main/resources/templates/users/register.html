@@ -5,12 +5,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Register Page</title>
+	<th:block th:insert="~{partials/head :: head}"></th:block>
 </head>
 <body>
+<th:block th:insert="~{partials/navbar :: navbar}"></th:block>
 
 <h1>This is the register page!</h1>
 
-<form method="post" action="/register" th:object="${user}">
+<form th:method="POST" th:action="@{/register}" th:object="${user}">
 	<label for="username-input">Username</label>
 	<input id="username-input" type="text" th:field="*{username}">
 	<br>
@@ -20,5 +22,7 @@
 	<button type="submit">Register</button>
 </form>
 
+
+<th:block th:insert="~{partials/footer-tags :: footer-tags}"></th:block>
 </body>
 </html>

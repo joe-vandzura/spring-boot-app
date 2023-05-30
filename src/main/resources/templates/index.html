@@ -5,8 +5,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Landing Page</title>
+	<th:block th:insert="~{partials/head :: head}"></th:block>
 </head>
 <body>
+<th:block th:insert="~{partials/navbar :: navbar}"></th:block>
 
 <h1> This is the landing page!</h1>
 
@@ -16,5 +18,6 @@
 </ul>
 
 
+<th:block th:insert="~{partials/footer-tags :: footer-tags}"></th:block>
 </body>
 </html>
