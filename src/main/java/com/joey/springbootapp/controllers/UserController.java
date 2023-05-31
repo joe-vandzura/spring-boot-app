@@ -28,7 +28,7 @@ public class UserController {
     public String saveUser(@ModelAttribute User user){
         boolean usernameAlreadyUsed = userDao.findByUsername(user.getUsername()) != null;
         if (usernameAlreadyUsed) {
-            return "register";
+            return "users/register";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);

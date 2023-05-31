@@ -14,8 +14,9 @@
 
 <ul th:each="user : ${users}">
 	<li>Username: <span th:text="${user.username}"></span>, ID: <span th:text="${user.id}"></span></li>
-
 </ul>
+
+<p th:text="${redditToken}"></p>
 
 
 <th:block th:insert="~{partials/footer-tags :: footer-tags}"></th:block>
