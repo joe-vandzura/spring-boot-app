@@ -29,6 +29,7 @@ public class Reddit {
     private String client_id = "NlVr95TtZUD5jqbz5G6uxQ";
     private String secret_key = "0ronCDpLQejgHFiVRpHtNmujKTAKDw";
     private String url = "https://www.reddit.com/api/v1/access_token";
+    private static HttpClient httpClient = null;
     private static String accessToken = null;
 
     public String getAccessToken() {
@@ -38,14 +39,16 @@ public class Reddit {
                     AuthScope.ANY,
                     new UsernamePasswordCredentials(client_id, secret_key)
             );
-            HttpClient httpClient = HttpClientBuilder
-                    .create().setDefaultCredentialsProvider(credentialsProvider)
-                    .build();
-            HttpPost httpPost = new HttpPost(url);
-            List<NameValuePair> params = new ArrayList<NameValuePair>(3);
-            params.add(new BasicNameValuePair("grant_type", "password"));
-            params.add(new BasicNameValuePair("username", username));
-            params.add(new BasicNameValuePair("password", password));
+            if (httpClient == null) {
+                httpClient = HttpClientBuilder
+                        .create().setDefaultCredentialsProvider(credentialsProvider)
+                        .build();
+            }
+                HttpPost httpPost = new HttpPost(url);
+                List<NameValuePair> params = new ArrayList<NameValuePair>(3);
+                params.add(new BasicNameValuePair("grant_type", "password"));
+                params.add(new BasicNameValuePair("username", username));
+                params.add(new BasicNameValuePair("password", password));
 
             try {
                 httpPost.setEntity(new UrlEncodedFormEntity(params));
@@ -74,5 +77,9 @@ public class Reddit {
             }
         }
         return accessToken;
+    }
+
+    public void createRedditPost() {
+        
     }
 }
